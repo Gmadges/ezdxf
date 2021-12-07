@@ -334,6 +334,9 @@ class ProxyGraphic:
             attribs['extrusion'] = Vec3(bs.read_bit_double(3))
 
         num_points = bs.read_bit_long()
+        if num_points <= 0:
+            return
+        
         if flag & 16:
             num_bulges = bs.read_bit_long()
         else:
