@@ -513,8 +513,9 @@ class ProxyGraphic:
         else:
             style = font
             if self._doc:
-                self._doc.styles.new(font, dxfattribs={'font': font,
-                                                       'bigfont': bigfont})
+                if not self._doc.styles.has_entry(font):
+                    self._doc.styles.new(font, dxfattribs={'font': font,
+                                                           'bigfont': bigfont})
                 self.textstyles[font] = style
         return style
 
